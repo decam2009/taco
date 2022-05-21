@@ -12,4 +12,4 @@ Used stack of technologies.
 3. H2 No SQL
 4. SL4J
 5. it will be upgrade
-6. MVC Pattern
+6. SpringMVC Pattern
