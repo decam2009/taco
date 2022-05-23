@@ -5,3 +5,7 @@
     grid-template-columns: 200px 200px;
     grid-template-rows: auto auto;
 }
+
+.ValidatorError{
+    color: red;
+}
