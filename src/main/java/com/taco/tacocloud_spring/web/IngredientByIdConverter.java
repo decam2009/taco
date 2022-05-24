@@ -1,20 +1,24 @@
-package com.example.tacocloud_spring.web;
+package com.taco.tacocloud_spring.web;
 
 
-import com.example.tacocloud_spring.Ingredient;
-import com.example.tacocloud_spring.Type;
+import com.taco.tacocloud_spring.data.IngredientRepository;
+import com.taco.tacocloud_spring.Ingredient;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
-
-import java.util.HashMap;
-import java.util.Map;
 
 @Component
 public class IngredientByIdConverter implements Converter<String, Ingredient> {
 
-  private Map<String, Ingredient> ingredientMap = new HashMap<>();
+  //private Map<String, Ingredient> ingredientMap = new HashMap<>();
+  private IngredientRepository ingredientRepo;
 
-  public IngredientByIdConverter() {
+  @Autowired
+  public IngredientByIdConverter(IngredientRepository ingredientRepo) {
+    this.ingredientRepo = ingredientRepo;
+  }
+
+  /*public IngredientByIdConverter() {
     ingredientMap.put("FLTO", new Ingredient("FLTO", "Flour Tortilla", Type.WRAP));
     ingredientMap.put("COTO", new Ingredient("COTO", "Corn Tortilla", Type.WRAP));
     ingredientMap.put("GRBF", new Ingredient("GRBF", "Ground Beef", Type.PROTEIN));
@@ -25,10 +29,10 @@ public class IngredientByIdConverter implements Converter<String, Ingredient> {
     ingredientMap.put("JACK", new Ingredient("JACK", "Monterrey Jack", Type.CHEESE));
     ingredientMap.put("SLSA", new Ingredient("SLSA", "Salsa", Type.SAUCE));
     ingredientMap.put("SRCR", new Ingredient("SRCR", "Sour Cream", Type.SAUCE));
-  }
+  }*/
 
   @Override
   public Ingredient convert(String id) {
-    return ingredientMap.get(id);
+    return ingredientRepo.findById(id).orElse(null);
   }
 }

@@ -1,4 +1,4 @@
-package com.example.tacocloud_spring;
+package com.taco.tacocloud_spring;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
