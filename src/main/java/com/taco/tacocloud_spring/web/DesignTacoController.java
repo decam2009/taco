@@ -1,5 +1,6 @@
 package com.taco.tacocloud_spring.web;
 
+import com.fasterxml.jackson.databind.util.ArrayIterator;
 import com.taco.tacocloud_spring.data.IngredientRepository;
 import com.taco.tacocloud_spring.Ingredient;
 import com.taco.tacocloud_spring.Taco;
@@ -13,6 +14,8 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -37,23 +40,14 @@ public class DesignTacoController {
   //Model – это объект, в котором данные пересылаются между контроллером и любым
   // представлением, ответственным за преобразование этих данных в размет- ку HTML.
   {
-    Iterable<Ingredient> ingredients = ingredientRepo.findAll(); //после перехода на БД
+    Iterable<Ingredient> ingredients = ingredientRepo.findAll();
+     /*List<Ingredient> ingredients = new ArrayList<>();
+    ingredientRepo.findAll().forEach(i -> ingredients.add(i));*/
 
-   /* List<Ingredient> ingredients = Arrays.asList(
-            new Ingredient("FLTO", "Flour Tortilla", Type.WRAP),
-            new Ingredient("COTO", "Corn Tortilla", Type.WRAP),
-            new Ingredient("GRBF", "Ground Beef", Type.PROTEIN),
-            new Ingredient("CARN", "Carnitas", Type.PROTEIN),
-            new Ingredient("TMTO", "Diced Tomatoes", Type.VEGGIES),
-            new Ingredient("LETC", "Lettuce", Type.VEGGIES),
-            new Ingredient("CHED", "Cheddar", Type.CHEESE),
-            new Ingredient("JACK", "Monterrey Jack", Type.CHEESE),
-            new Ingredient("SLSA", "Salsa", Type.SAUCE),
-            new Ingredient("SRCR", "Sour Cream", Type.SAUCE)
-    );*/
     Type[] types = Type.values();
     for (Type type : types) {
-      model.addAttribute(type.toString().toLowerCase(), filterByType((List<Ingredient>) ingredients, type));
+      model.addAttribute(type.toString().toLowerCase(),
+              filterByType((List<Ingredient>) ingredients, type));
     }
   }
 
