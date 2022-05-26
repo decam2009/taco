@@ -1,10 +1,11 @@
 package com.taco.tacocloud_spring;
 
 import lombok.Data;
-import org.springframework.data.relational.core.mapping.Table;
+
+import javax.persistence.Entity;
 
 @Data
-@Table
+@Entity
 public class IngredientRef {
   private final String ingredient;
 }

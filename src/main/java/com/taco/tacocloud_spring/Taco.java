@@ -1,17 +1,16 @@
 package com.taco.tacocloud_spring;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Table;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.List;
 
 @Data
-@Table
+@Entity
 public class Taco {
   @Id
   private Long id;

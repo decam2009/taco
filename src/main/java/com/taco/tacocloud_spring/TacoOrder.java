@@ -2,9 +2,9 @@ package com.taco.tacocloud_spring;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.CreditCardNumber;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Table;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
@@ -14,7 +14,7 @@ import java.util.Date;
 import java.util.List;
 
 @Data //lombok
-@Table
+@Entity
 
 public class TacoOrder implements Serializable {
 
