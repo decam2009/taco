@@ -8,23 +8,24 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import com.taco.tacocloud_spring.Ingredient.Type;
+
 @SpringBootApplication //(scanBasePackages = "com.taco.data")
 
-public class TacoCloudSpringApplication implements WebMvcConfigurer{
+public class TacoCloudSpringApplication implements WebMvcConfigurer {
 
   public static void main(String[] args) {
     SpringApplication.run(TacoCloudSpringApplication.class, args);
   }
 
-
   @Override
   public void addViewControllers(ViewControllerRegistry registry) {
     registry.addViewController("/").setViewName("home");
   }
+
   @Bean
   public CommandLineRunner dataLoader(IngredientRepository repo) {
     return args -> {
-      repo.deleteAll();
       repo.save(new Ingredient("FLTO", "Flour Tortilla", Type.WRAP));
       repo.save(new Ingredient("COTO", "Corn Tortilla", Type.WRAP));
       repo.save(new Ingredient("GRBF", "Ground Beef", Type.PROTEIN));

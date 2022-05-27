@@ -14,6 +14,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -27,7 +28,7 @@ import java.util.stream.Collectors;
 // Это важно, потому что создание тако также является первым шагом в создании заказа,
 // и созданный нами заказ необходимо будет перенести в сеанс, охватывающий несколько запросов.
 
-public class DesignTacoController {
+public class DesignTacoController{
 
   private final IngredientRepository ingredientRepo;
   @Autowired
@@ -41,13 +42,12 @@ public class DesignTacoController {
   // представлением, ответственным за преобразование этих данных в размет- ку HTML.
   {
     Iterable<Ingredient> ingredients = ingredientRepo.findAll();
-     /*List<Ingredient> ingredients = new ArrayList<>();
-    ingredientRepo.findAll().forEach(i -> ingredients.add(i));*/
+   //  List<Ingredient> ingredients = new ArrayList<>();
+   // ingredientRepo.findAll().forEach(ingredients::add);
 
-    Type[] types = Type.values();
+    Type [] types = Type.values();
     for (Type type : types) {
-      model.addAttribute(type.toString().toLowerCase(),
-              filterByType((List<Ingredient>) ingredients, type));
+      model.addAttribute(type.toString().toLowerCase(), filterByType((List<Ingredient>) ingredients, type));
     }
   }
 
