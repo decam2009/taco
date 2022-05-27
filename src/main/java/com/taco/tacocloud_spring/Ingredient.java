@@ -1,6 +1,5 @@
 package com.taco.tacocloud_spring;
 
-import ch.qos.logback.core.rolling.helper.IntegerTokenConverter;
 import lombok.*;
 
 import javax.persistence.Entity;

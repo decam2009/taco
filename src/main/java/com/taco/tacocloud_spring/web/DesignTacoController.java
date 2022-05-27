@@ -1,22 +1,18 @@
 package com.taco.tacocloud_spring.web;
 
-import com.fasterxml.jackson.databind.util.ArrayIterator;
 import com.taco.tacocloud_spring.data.IngredientRepository;
 import com.taco.tacocloud_spring.Ingredient;
 import com.taco.tacocloud_spring.Taco;
 import com.taco.tacocloud_spring.TacoOrder;
-import com.taco.tacocloud_spring.Type;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+import com.taco.tacocloud_spring.Ingredient;
 
 import javax.validation.Valid;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -45,8 +41,8 @@ public class DesignTacoController{
    //  List<Ingredient> ingredients = new ArrayList<>();
    // ingredientRepo.findAll().forEach(ingredients::add);
 
-    Type [] types = Type.values();
-    for (Type type : types) {
+    Ingredient.Type[] types = Ingredient.Type.values();
+    for (Ingredient.Type type : types) {
       model.addAttribute(type.toString().toLowerCase(), filterByType((List<Ingredient>) ingredients, type));
     }
   }
@@ -67,7 +63,7 @@ public class DesignTacoController{
     return "design";
   }
 
-  private Iterable<Ingredient> filterByType(List<Ingredient> ingredients, Type type) {
+  private Iterable<Ingredient> filterByType(List<Ingredient> ingredients, Ingredient.Type type) {
     return ingredients.stream().filter(x -> x.getType().equals(type)).collect(Collectors.toList());
   }
 
