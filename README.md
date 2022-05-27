@@ -5,6 +5,7 @@ Project started at 19th of May 2022.
 Added:
 Service to make taco.
 Service to order made taco.
+Added JDBC branch, Spring Data JDBC branch, Spring Data JPA Branch
 
 Used stack of technologies.
 1. Spring Boot
