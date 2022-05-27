@@ -11,5 +11,8 @@ Used stack of technologies.
 2. Thymeleaf
 3. H2 No SQL
 4. SL4J
-5. it will be upgrade
-6. SpringMVC Pattern
+5. JDBC
+6. Spring Data JDBC
+7. Spring DataJPA
+8. Cassandra NoSQL
+9. SpringMVC Pattern
