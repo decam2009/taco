@@ -16,4 +16,5 @@ Used stack of technologies.
 6. Spring Data JDBC
 7. Spring DataJPA
 8. Cassandra NoSQL
-9. SpringMVC Pattern
+9. Spring Security
+10. SpringMVC Pattern
