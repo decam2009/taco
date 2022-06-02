@@ -9,4 +9,15 @@ spring:
     password: taco
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
-
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 637598257166-8d8c0hkam0nfkrub9dmacvems1q3u6i3.apps.googleusercontent.com
+            client-secret: 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
+            scope:
+              - openid
+              - email
+              - profile
+            client-authentication-method: form

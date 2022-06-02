@@ -12,15 +12,10 @@ import com.taco.tacocloud_spring.Ingredient.Type;
 
 @SpringBootApplication //(scanBasePackages = "com.taco.data")
 
-public class TacoCloudSpringApplication implements WebMvcConfigurer {
+public class TacoCloudSpringApplication extends WebConfig {
 
   public static void main(String[] args) {
     SpringApplication.run(TacoCloudSpringApplication.class, args);
-  }
-
-  @Override
-  public void addViewControllers(ViewControllerRegistry registry) {
-    registry.addViewController("/").setViewName("home");
   }
 
   @Bean
