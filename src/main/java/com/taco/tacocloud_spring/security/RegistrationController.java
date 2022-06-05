@@ -1,6 +1,6 @@
-package com.taco.tacocloud_spring.web;
+package com.taco.tacocloud_spring.security;
 
-import com.taco.tacocloud_spring.RegistrationForm;
+import com.taco.tacocloud_spring.security.RegistrationForm;
 import com.taco.tacocloud_spring.data.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;

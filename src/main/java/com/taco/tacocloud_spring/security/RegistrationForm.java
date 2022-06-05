@@ -1,5 +1,6 @@
-package com.taco.tacocloud_spring;
+package com.taco.tacocloud_spring.security;
 
+import com.taco.tacocloud_spring.User;
 import lombok.Data;
 import org.springframework.security.crypto.password.PasswordEncoder;
 

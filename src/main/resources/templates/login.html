@@ -3,22 +3,23 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Taco Cloud</title></head>
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
 <body>
 <h1>Login</h1>
 <img th:src="@{/images/TacoCloud.png}"/>
-<div th:if="${error}">
+<div th:if="${error}" class="ValidatorError">
     Unable to login. Check your username and password.
 </div>
 <p>New here? Click
     <a th:href="@{/register}">here</a> to register.</p>
-<form method="POST" th:action="@{/login}" id="loginForm"><label for="username">Username: </label>
+<form method="POST" th:action="@{/login}" id="loginForm">
+    <label for="username">Username: </label>
     <input type="text" name="username" id="username"/><br/>
     <label for="password">Password: </label>
     <input type="password" name="password" id="password"/><br/>
     <input type="submit" value="Login"/>
     <input type="submit" value="Logout" th:action="@{/logout}"><br/>
     <a th:href="@{/oauth2/authorization/google}">Sign in with Google</a>
-
 </form>
 <!--<form method="POST" th:action="@{/logout}"><input type="submit" value="Logout"/>-->
 </body>

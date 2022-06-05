@@ -1,5 +1,6 @@
-package com.taco.tacocloud_spring;
+package com.taco.tacocloud_spring.security;
 
+import com.taco.tacocloud_spring.User;
 import com.taco.tacocloud_spring.data.UserRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,13 +26,13 @@ public class SecurityConfig {
   }
 
   @Bean
-  public UserDetailsService userDetailsService(UserRepository userRepo /*PasswordEncoder encoder*/) {
+  public UserDetailsService userDetailsService(UserRepository userRepo, PasswordEncoder encoder) {
     //Хранение юзеров в памяти, для тестирование
-    /* List<UserDetails> userList = new ArrayList<>();
-    userList.add(new User("buzz", encoder.encode("password"), Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"))));
+   /* List<UserDetails> userList = new ArrayList<>();
+    userList.add(new User("buzz", encoder.encode("password"),  Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"))));
     userList.add(new User("woody", encoder.encode("password"), Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"))));
-    return new InMemoryUserDetailsManager(userList);*/
-    //Храние юзеров в БД через JPA
+    return new InMemoryUserDetailsManager(userList);
+   */ //Храние юзеров в БД через JPA
     return username -> {
       User user = userRepo.findByUsername(username);
       if (user != null)
@@ -46,17 +47,21 @@ public class SecurityConfig {
             .authorizeRequests()
             .antMatchers("/design", "/orders").access("hasRole('USER')")
             .antMatchers("/", "/**").access("permitAll()")
+
             .and()
-            .formLogin()
-            .loginPage("/login")
+              .formLogin()
+                .loginPage("/login")
             .defaultSuccessUrl("/design", true)
+
             .and()
-            .oauth2Login()
-            .loginPage("/login")
+              .oauth2Login()
+                .loginPage("/login")
+
             .and()
-            .logout()
-            .logoutSuccessUrl("/")
+              .logout()
+                .logoutSuccessUrl("/")
+
             .and()
-            .build();
+              .build();
   }
 }

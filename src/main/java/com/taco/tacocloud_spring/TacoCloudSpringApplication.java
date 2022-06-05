@@ -12,7 +12,7 @@ import com.taco.tacocloud_spring.Ingredient.Type;
 
 @SpringBootApplication //(scanBasePackages = "com.taco.data")
 
-public class TacoCloudSpringApplication extends WebConfig {
+public class TacoCloudSpringApplication {
 
   public static void main(String[] args) {
     SpringApplication.run(TacoCloudSpringApplication.class, args);
