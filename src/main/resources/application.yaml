@@ -21,3 +21,5 @@ spring:
               - email
               - profile
             client-authentication-method: form
+server:
+  port: 9090

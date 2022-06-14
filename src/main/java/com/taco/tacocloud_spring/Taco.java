@@ -25,6 +25,11 @@ public class Taco {
   @ManyToMany
   private List<Ingredient> ingredients = new ArrayList<>();
 
+  @PrePersist
+  void createdAt() {
+    this.createdAt = new Date();
+  }
+
   public void addIngredient(Ingredient ingredient) {
     this.ingredients.add(ingredient);
   }

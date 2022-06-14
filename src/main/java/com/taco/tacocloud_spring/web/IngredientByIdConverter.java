@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 public class IngredientByIdConverter implements Converter<String, Ingredient> {
 
   //private Map<String, Ingredient> ingredientMap = new HashMap<>();
-  private IngredientRepository ingredientRepo;
+  private final IngredientRepository ingredientRepo;
 
   @Autowired
   public IngredientByIdConverter(IngredientRepository ingredientRepo) {
