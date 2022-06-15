@@ -42,7 +42,7 @@ public class OrderController {
     if (errors.hasErrors()) {
       return "orderForm";
     }
-    tacoOrder.setUser(user);
+    //tacoOrder.setUser(user);
     orderRepo.save(tacoOrder);
     log.info("Save complete" + tacoOrder);
     sessionStatus.setComplete();

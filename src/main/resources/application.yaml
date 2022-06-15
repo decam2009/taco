@@ -1,4 +1,7 @@
 spring:
+  data:
+    rest:
+      basePath: /api
   thymeleaf:
     cache: false
   datasource:
