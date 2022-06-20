@@ -10,7 +10,7 @@ Added JDBC branch, Spring Data JDBC branch, Spring Data JPA Branch
 Used stack of technologies.
 1. Spring Boot
 2. Thymeleaf
-3. H2 No SQL
+3. H2
 4. SL4J
 5. JDBC
 6. Spring Data JDBC
