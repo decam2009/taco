@@ -17,4 +17,6 @@ Used stack of technologies.
 7. Spring DataJPA
 8. Cassandra NoSQL
 9. Spring Security
-10. SpringMVC Pattern
+10. OAuth2Server https://github.com/decam2009/oauth2server
+11. Oauth2Client as branch
+12. SpringMVC Pattern
