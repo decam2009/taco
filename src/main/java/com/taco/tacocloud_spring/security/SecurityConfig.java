@@ -35,7 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .hasAuthority("SCOPE_deleteIngredients")
             .antMatchers("api//tacos", "api//orders/**")
             .permitAll()
-            .antMatchers("/**")
+            .antMatchers("//**")
             .access("permitAll")
             .and()
             .oauth2ResourceServer(oauth2 -> oauth2.jwt())
@@ -49,7 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
             .and()
             .csrf()
-            .ignoringAntMatchers("/h2-console/**", "/api/**")
+            .ignoringAntMatchers("/h2-console/**", "/api/**", "/design")
 
             // Allow pages to be loaded in frames from the same origin; needed for H2-Console
             .and()

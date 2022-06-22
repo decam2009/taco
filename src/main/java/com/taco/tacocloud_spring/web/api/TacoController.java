@@ -17,12 +17,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 
 @RestController
-@RequestMapping(path="/api/tacos",                      // <1>
-                produces="application/json")
-@CrossOrigin(origins="*")        // <2>
+@RequestMapping(path = "/api/tacos",                      // <1>
+        produces = "application/json")
+@CrossOrigin(origins = "*")        // <2>
 public class TacoController {
   private TacoRepository tacoRepo;
 
@@ -30,26 +32,21 @@ public class TacoController {
     this.tacoRepo = tacoRepo;
   }
 
-  @GetMapping(params="recent")
-  public Iterable<Taco> recentTacos() {                 //<3>
-    PageRequest page = PageRequest.of(
-            0, 12, Sort.by("createdAt").descending());
-    return tacoRepo.findAll(page).getContent();
+  @GetMapping(params = "recent")
+  public Flux<Taco> recentTacos() {                 //<3>
+    /*PageRequest page = PageRequest.of(
+            0, 12, Sort.by("createdAt").descending());*/
+    return tacoRepo.findAll().take(12);
   }
 
-  @PostMapping(consumes="application/json")
+  @PostMapping(consumes = "application/json")
   @ResponseStatus(HttpStatus.CREATED)
-  public Taco postTaco(@RequestBody Taco taco) {
-    return tacoRepo.save(taco);
+  public Mono<Taco> postTaco(@RequestBody Mono<Taco> tacoMono) {
+    return tacoRepo.saveAll(tacoMono).next();
   }
 
   @GetMapping("/{id}")
-  public Taco tacoById(@PathVariable("id") Long id) {
-    Optional<Taco> optTaco = tacoRepo.findById(id);
-    if (optTaco.isPresent()) {
-      return optTaco.get();
-    }
-    return null;
+  public Mono<Taco> tacoById(@PathVariable("id") Long id) {
+    return tacoRepo.findById(id);
   }
-
 }
